@@ -10,6 +10,7 @@
 - dogs
 
 Полезные ссылки:
+
 https://en.wikipedia.org/wiki/List_of_dog_breeds
 
 https://ru.wikipedia.org/wiki/Породы_собак_по_классификации_кинологических_организаций
@@ -20,7 +21,28 @@ https://ru.wikipedia.org/wiki/Английский_бульдог
 
 https://ru.wikipedia.org/wiki/Пудель
 
+https://ru.wikipedia.org/wiki/Колли
+
+
 ### Эволюция проекта
 - [x] Созданы директории и локальное окружение
 - [x] Сделаны настройки для github.
 - [x] Создан проект django и приложение mainapp
+- [x] Создано приложение dogs и модель базы данных для этого приложения (Dogs - собаки, Breed - породы)
+- [x] Заполнена база данных
+- [x] Добавлена возможность автозаполнения базы данных из файла  dumpdata/dogs_dump.json
+- [x] Добавлена возможность автозаполнения базы данных через команду fill (dogs/management/commands/fill.py) 
+
+
+### Сохранение содержимого базы данных (dump) и восстановление (dump) 
+```bash
+#считываем настройки окружения перед обращением к базе данных
+source .env
+#сделать dump базы данных с сохранением в файл
+python manage.py dumpdata dogs > dumpdata/dogs_dump.json
+#восстановить  базу данных со считыванием из dump-файла
+python manage.py loaddata dumpdata/dogs_dump.json
+#восстановление базы данных с выполнением функции fill (dogs/management/commands/fill.py)
+python manage.py fill
+```
+
