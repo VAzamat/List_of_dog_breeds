@@ -1,0 +1,25 @@
+
+    <!doctype html>
+    <html>
+    <head>
+    <title>HTML Page</title>
+    <meta name="description" content="Our first page">
+    <meta name="keywords" content="html tutorial template">
+    </head>
+    <body>
+    Hello, Skypro!!!
+
+<form method="post">
+	{% csrf_token %}
+	<input type="text" name="username" placeholder="name" />
+    <br>
+	<input type="email" name="email" placeholder="email@ia.eu" />
+    <br>
+    <textarea name="message"> </textarea>
+    <br>
+	<input type="submit" value="Отправить" />
+</form>
+    </body>
+    </html>
+
+

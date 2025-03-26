@@ -1,0 +1,35 @@
+{% extends 'dogs/base.html' %}
+{% load path_tag_filter %}
+{% block content_SingleObjectCard %}
+<div class="row row-cols-1 row-cols-md-2 mb-2 text-center">
+  {% for object in object_list %}
+      <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm border-primary">
+
+          <div class="card-header py-3 text-bg-primary border-primary">
+            <h4 class="my-0 fw-normal">{{object.name}}</h4>
+            <img height="200px" src="{% get_media_prefix object.photo %}" alt="Avatar"><br/><br/>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title"><small class="text-body-secondary fw-light"> </small></h1>
+
+            Кличка: {{object.name}}<br>
+            Дата рождения: {{object.date_born | date:"d.m.Y"}}<br>
+            Порода: {{object.breed}}<br>
+
+
+
+          </div>
+
+
+            <div class="card-footer">
+              <a class="btn btn-primary" href="{% url 'dogs:detail' object.pk %}" role="button">Подробнее ...</a>
+              <a class="btn btn-primary" href="{% url 'dogs:update' object.pk %}" role="button">Изменить</a>
+              <a class="btn btn-primary" href="{% url 'dogs:delete' object.pk %}" role="button">Удалить</a>
+            </div>
+
+        </div>
+      </div>
+  {% endfor %}
+</div>
+{% endblock %}

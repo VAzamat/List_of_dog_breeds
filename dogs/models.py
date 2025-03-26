@@ -6,6 +6,8 @@ BLANKNULL = {'blank':True, 'null':True}
 class Breed(models.Model):
     name = models.CharField(max_length=100, verbose_name='Название породы', help_text='Введите породу собаки')
     description = models.TextField(verbose_name='Описание породы', help_text='Введите описание породы', **BLANKNULL)
+    photo = models.ImageField(upload_to="breeds/photo", verbose_name='Фото породы', help_text='Загрузите фото породы',
+                              **BLANKNULL)
 
     def __str__(self):
         return self.name

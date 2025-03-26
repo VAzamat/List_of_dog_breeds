@@ -6,6 +6,5 @@ from mainapp.apps import MainappConfig
 app_name = MainappConfig.name
 
 urlpatterns = [
-    path("", home, name='home'),
 ]
 
