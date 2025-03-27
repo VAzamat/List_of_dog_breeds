@@ -1,3 +1,8 @@
+from datetime import timedelta
+
+from django.core.exceptions import ValidationError
+from django.utils import timezone
+
 from django import forms
 from django.forms import BooleanField
 
@@ -18,6 +23,16 @@ class DogsForm(StyleFormMixin, forms.ModelForm):
         fields = '__all__'
 
 class ParentForm(forms.ModelForm):
+    def clean_year(self):
+        year = self.cleaned_data['year']
+        current_year = timezone.now().year
+        timedelta = current_year - year
+        if year > current_year:
+            raise ValidationError('Вы ввели год больше текущего.')
+        elif timedelta > 100:
+            raise ValidationError('Возраст собаки получился более 100 лет. Это ошибка!!!')
+        return year
+
     class Meta:
         model = Parent
         fields = '__all__'
