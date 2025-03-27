@@ -1,7 +1,7 @@
 from django import forms
 from django.forms import BooleanField
 
-from dogs.models import Dogs, Breed
+from dogs.models import Dogs, Breed, Parent
 
 class StyleFormMixin:
     def __init__(self, *args, **kwargs):
@@ -15,4 +15,9 @@ class StyleFormMixin:
 class DogsForm(StyleFormMixin, forms.ModelForm):
     class Meta:
         model = Dogs
+        fields = '__all__'
+
+class ParentForm(forms.ModelForm):
+    class Meta:
+        model = Parent
         fields = '__all__'
