@@ -30,3 +30,14 @@ class Dogs(models.Model):
         verbose_name_plural = 'Собаки'
         ordering = ['breed','name']
 
+
+class Parent(models.Model):
+    dog = models.ForeignKey(Dogs, on_delete=models.SET_NULL, verbose_name='Собака',
+                              help_text='Выберете собаку', related_name='parent', **BLANKNULL)
+    name = models.CharField(max_length=100, verbose_name='Кличка', help_text='Введите кличку предка собаки')
+    breed = models.ForeignKey(Breed, on_delete=models.SET_NULL, verbose_name='Порода',
+                              help_text='Введите породу предка собаки', related_name='parent_dogs', **BLANKNULL)
+    year = models.PositiveIntegerField(verbose_name='Год рождения', help_text='Укажите год рождения',default=100)
+    class Meta:
+        verbose_name = 'Предок собаки'
+        verbose_name_plural = 'Предки собаки'
