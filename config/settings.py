@@ -45,6 +45,7 @@ INSTALLED_APPS = [
 
     "mainapp",
     "dogs",
+    "users",
 ]
 
 MIDDLEWARE = [
