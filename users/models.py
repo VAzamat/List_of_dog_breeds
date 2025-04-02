@@ -12,6 +12,8 @@ class User(AbstractUser):
     avatar = models.ImageField(upload_to='users/avatars/', verbose_name='Фотография пользователя', help_text='Выберете и загрузите фотографию для профиля пользователя')
     email = models.EmailField(unique=True, verbose_name='почта', help_text='Почта пользователя как уникальное поле регистрации')
 
+    token = models.CharField(max_length=100, verbose_name="проверочный код для подтверждения пользователя", **NULLABLE)
+
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
 
