@@ -10,4 +10,9 @@ class RegisterView(CreateView):
     success_url = reverse_lazy('users:login')
 
 class ProfileUpdateView(UpdateView):
-    pass
+    model = User
+    form_class = UserUpdateProfileForm
+    success_url = reverse_lazy('users:profile')
+
+    def get_object(self, queryset=None):
+        return self.request.user
