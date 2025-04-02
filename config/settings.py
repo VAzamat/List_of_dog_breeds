@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 from pathlib import Path
 import os
 
+from django.conf.global_settings import SERVER_EMAIL, DEFAULT_FROM_EMAIL
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -154,3 +156,14 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 AUTH_USER_MODEL='users.User'
 LOGIN_REDIRECT_URL='/'
 LOGOUT_REDIRECT_URL='/'
+
+#yahoo.com smtp
+EMAIL_HOST_USER = os.environ.get('SMTP_MAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('SMTP_MAIL_HOST_PASSWORD')
+EMAIL_HOST = 'smtp.mail.yahoo.com'
+EMAIL_PORT = 465
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = True
+
+SERVER_EMAIL = EMAIL_HOST_USER
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
