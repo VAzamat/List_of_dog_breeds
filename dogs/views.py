@@ -57,5 +57,3 @@ class DogsUpdateView(UpdateView):
 class DogsDeleteView(DeleteView):
     model = Dogs
     success_url = reverse_lazy('dogs:list')
-
-
