@@ -20,7 +20,7 @@ class StyleFormMixin:
 class DogsForm(StyleFormMixin, forms.ModelForm):
     class Meta:
         model = Dogs
-        fields = '__all__'
+        exclude = ('owner',)
 
 class ParentForm(forms.ModelForm):
     def clean_year(self):

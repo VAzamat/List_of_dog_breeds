@@ -1,4 +1,5 @@
 from django.db import models
+from users.models import User
 
 # Create your models here.
 BLANKNULL = {'blank':True, 'null':True}
@@ -21,6 +22,7 @@ class Dogs(models.Model):
     breed = models.ForeignKey(Breed, on_delete=models.SET_NULL, verbose_name='Порода', help_text='Введите породу собаки', related_name='dogs', **BLANKNULL)
     photo = models.ImageField(upload_to="dogs/photo", verbose_name='Фото собаки', help_text='Загрузите фото собаки', **BLANKNULL)
     date_born = models.DateField(verbose_name='Дата рождения', help_text='Укажите дату рождения')
+    owner = models.ForeignKey(User, on_delete=models.SET_NULL, verbose_name='Владелец собаки', help_text='Введите идентификатор владельца собаки', related_name='user',**BLANKNULL)
 
     def __str__(self):
         return self.name
