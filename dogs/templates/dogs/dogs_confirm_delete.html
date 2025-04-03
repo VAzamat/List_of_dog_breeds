@@ -4,7 +4,7 @@
       <div class="col">
           <form method="post">
 	        {% csrf_token %}
-             <p>Действительно хотите удалить данного студента:</p>
+             <p>Действительно хотите удалить данную собаку:</p>
               <p> <b>{{object.last_name}} {{object.first_name}} {{object.patronymic}} </b> </p>
               <button type="submit" class="btn btn-success">Подтвердить</button>
               <a href="{% url 'dogs:list' %}" class="btn btn-success btn-warning">Отмена</a>
